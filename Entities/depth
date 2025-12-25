@@ -7,8 +7,8 @@ local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/Regul
 local entity = spawner.Create({
 	Entity = {
 		Name = "Depth",
-		Asset = "https://github.com/no12356/Doors-Hardmode-Remake/blob/main/models/depthos.rbxm?raw=true",
-		HeightOffset = 0
+		Asset = "https://github.com/no12356/Doors-Hardmode-Remake/raw/main/models/depthos.rbxm",
+		HeightOffset = -1
 	},
 	Lights = {
 		Flicker = {
