@@ -27,8 +27,8 @@ local entity = spawner.Create({
     ---====== Jumpscare Configuration ======---
     Jumpscare = {
         Enabled = true,
-        Image = "rbxassetid://YOUR_IMAGE_ASSET_ID_HERE", -- The image asset ID shown on screen during the jumpscare
-        Sound = "rbxassetid://YOUR_SOUND_ASSET_ID_HERE", -- The audio asset ID played during the jumpscare
+        Image = "rbxassetid://10826375579", -- The image asset ID shown on screen during the jumpscare
+        Sound = "rbxassetid://104513172698892", -- The audio asset ID played during the jumpscare
         Duration = 2, -- How long in seconds the jumpscare lasts before showing the death screen
         Color = Color3.fromRGB(255, 0, 0) -- Optional tint color for the jumpscare
     },
