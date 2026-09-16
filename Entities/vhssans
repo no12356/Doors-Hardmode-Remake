@@ -1,11 +1,6 @@
 ---====== Load spawner ======---
 local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/V2/Source.lua"))()
 
----====== Wait for game data ======---
-local replicatedStorage = game:GetService("ReplicatedStorage")
-repeat task.wait() until replicatedStorage:FindFirstChild("GameData") and replicatedStorage.GameData:FindFirstChild("LatestRoom")
-local latestRoom = replicatedStorage.GameData.LatestRoom
-
 ---====== Create entity template ======---
 local entity = spawner.Create({
     Entity = {
@@ -20,13 +15,13 @@ local entity = spawner.Create({
     },
     Earthquake = { Enabled = true },
     CameraShake = { Enabled = true, Range = 100, Values = {10, 20, 0.2, 1.5} },
-    Movement = { Speed = 750, Delay = 0, Reversed = false },
-    Rebounding = { Enabled = true, Type = "Ambush", Min = 3, Max = 4, Delay = 0.5 },
+    Movement = { Speed = 21, Delay = 3, Reversed = false },
+    Rebounding = { Enabled = true, Type = "Ambush", Min = 1, Max = 1, Delay = 3 },
     Damage = { Enabled = true, IgnoreHiding = false, Range = 100, Amount = 199 },
     Crucifixion = { Enabled = true, Range = 40, Resist = false, Break = true },
     Death = {
-        Type = "Guiding",
-        Hints = {"You had a bad time...", "Watch out for VHS!Sans when the lights flicker."},
+        Type = "Curious",
+        Hints = {"You died to who you call vhs!sans...", "Try your best to out-run him.", "I really don't have nothing else", "Just try your best to run and Hide when you can."},
         Cause = "VHS!Sans"
     }
 })
@@ -52,23 +47,5 @@ entity:SetCallback("OnDespawned", function()
     print("VHS!Sans despawned")
 end)
 
----====== Synced Room Progression Loop ======---
-local SpawnChance = 15
-local MinRoom = 20
-local lastRoomVal = latestRoom.Value
-
-latestRoom.Changed:Connect(function(roomNum)
-    if roomNum > lastRoomVal then
-        lastRoomVal = roomNum
-        math.randomseed(roomNum * 12345)
-        
-        if roomNum >= MinRoom then
-            local roll = math.random(1, 100)
-            if roll <= SpawnChance then
-                pcall(function()
-                    entity:Run()
-                end)
-            end
-        end
-    end
-end)
+---====== Run entity ======---
+entity:Run()
