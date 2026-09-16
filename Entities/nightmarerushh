@@ -1,0 +1,51 @@
+---====== Load spawner ======---
+local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/V2/Source.lua"))()
+
+---====== Create entity template ======---
+local entity = spawner.Create({
+    Entity = {
+        Name = "Nightmare Rush",
+        Asset = "rbxassetid://18454349540", -- Replace with your uploaded model asset ID if needed
+        HeightOffset = 1
+    },
+    Lights = {
+        Flicker = { Enabled = true, Duration = 3 },
+        Shatter = true,
+        Repair = false
+    },
+    Earthquake = { Enabled = true },
+    CameraShake = { Enabled = true, Range = 120, Values = {12, 35, 0.1, 1.2} },
+    Movement = { Speed = 200, Delay = 3, Reversed = false },
+    Rebounding = { Enabled = true, Type = "Ambush", Min = 1, Max = 1, Delay = 1 },
+    Damage = { Enabled = true, IgnoreHiding = false, Range = 90, Amount = 100 },
+    Crucifixion = { Enabled = true, Range = 40, Resist = false, Break = true },
+    Death = {
+        Type = "Guiding",
+        Hints = {"You died to whom you call nightmare rush", "It's faster than regular Rush", "Dont be fooled, he doesn't make a sound when hes nearby", "Use the flickering lights to know when he arrives", "He's also like ambush, he rebounds only once"},
+        Cause = "Nightmare Rush"
+    }
+})
+
+---====== Debug Callbacks ======---
+entity:SetCallback("OnSpawned", function()
+    print("Nightmare Rush has spawned")
+end)
+
+entity:SetCallback("OnStartMoving", function()
+    print("Nightmare Rush has started moving")
+end)
+
+entity:SetCallback("OnEnterRoom", function(room, firstTime)
+    if firstTime == true then
+        print("Nightmare Rush has entered room: ".. room.Name.. " for the first time")
+    else
+        print("Nightmare Rush has entered room: ".. room.Name.. " again")
+    end
+end)
+
+entity:SetCallback("OnDespawned", function()
+    print("Nightmare Rush despawned")
+end)
+
+---====== Run entity ======---
+entity:Run()
