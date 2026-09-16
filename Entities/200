@@ -1,32 +1,27 @@
 ---====== Load spawner ======---
 local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/V2/Source.lua"))()
 
----====== Wait for game data ======---
-local replicatedStorage = game:GetService("ReplicatedStorage")
-repeat task.wait() until replicatedStorage:FindFirstChild("GameData") and replicatedStorage.GameData:FindFirstChild("LatestRoom")
-local latestRoom = replicatedStorage.GameData.LatestRoom
-
 ---====== Create entity template ======---
 local entity = spawner.Create({
     Entity = {
         Name = "200",
-        Asset = "https://raw.githubusercontent.com/Isth4t/DoorsModels/main/200Moving.rbxm",
+        Asset = "https://raw.githubusercontent.com/Isth4t/DoorsModels/main/200Moving.rbxm", -- Replace with your uploaded model asset ID if needed
         HeightOffset = 0
     },
     Lights = {
-        Flicker = { Enabled = true, Duration = 5 },
+        Flicker = { Enabled = true, Duration = 3 },
         Shatter = true,
         Repair = false
     },
     Earthquake = { Enabled = true },
-    CameraShake = { Enabled = true, Range = 100, Values = {5, 15, 0.1, 1} },
-    Movement = { Speed = 700, Delay = 0, Reversed = true },
-    Rebounding = { Enabled = true, Type = "Ambush", Min = 2, Max = 3, Delay = 2 },
-    Damage = { Enabled = true, IgnoreHiding = false, Range = 20, Amount = 100 },
+    CameraShake = { Enabled = true, Range = 120, Values = {5, 15, 0.1, 1} },
+    Movement = { Speed = 500, Delay = 10, Reversed = false },
+    Rebounding = { Enabled = true, Type = "Ambush", Min = 4, Max = 4, Delay = 2 },
+    Damage = { Enabled = true, IgnoreHiding = false, Range = 90, Amount = 100 },
     Crucifixion = { Enabled = true, Range = 40, Resist = false, Break = true },
     Death = {
         Type = "Guiding",
-        Hints = {"You died to 200.", "Watch out next time!"},
+        Hints = {"You died to 200.", "It's very fast.", "Hide when you hear it!", "Its like A-60 but with less rebounds"},
         Cause = "200"
     }
 })
@@ -40,7 +35,7 @@ entity:SetCallback("OnStartMoving", function()
     print("200 has started moving")
 end)
 
-entity:SetCallback("OnEnterRoom", function(room: Model, firstTime: boolean)
+entity:SetCallback("OnEnterRoom", function(room, firstTime)
     if firstTime == true then
         print("200 has entered room: ".. room.Name.. " for the first time")
     else
@@ -52,23 +47,5 @@ entity:SetCallback("OnDespawned", function()
     print("200 despawned")
 end)
 
----====== Synced Room Progression Loop ======---
-local SpawnChance = 20
-local MinRoom = 15
-local lastRoomVal = latestRoom.Value
-
-latestRoom.Changed:Connect(function(roomNum)
-    if roomNum > lastRoomVal then
-        lastRoomVal = roomNum
-        math.randomseed(roomNum * 12345)
-        
-        if roomNum >= MinRoom then
-            local roll = math.random(1, 100)
-            if roll <= SpawnChance then
-                pcall(function()
-                    entity:Run()
-                end)
-            end
-        end
-    end
-end)
+---====== Run entity ======---
+entity:Run()
