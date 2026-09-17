@@ -20,7 +20,7 @@ achievementGiver({
 -- Depth
 coroutine.wrap(function()
     while true do
-        wait(30)
+        wait(80)
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(0)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/no12356/Doors-Hardmode-Remake/refs/heads/main/Entities/different%20depth"))()
@@ -40,7 +40,7 @@ end)()
 -- Trauma
 coroutine.wrap(function()
     while true do
-        wait(110)
+        wait(120)
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(0)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/no12356/Doors-Hardmode-Remake/refs/heads/main/Entities/trauma"))()
@@ -50,7 +50,7 @@ end)()
 -- NightmareRush
 coroutine.wrap(function()
     while true do
-        wait(145)
+        wait(155)
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(0)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/no12356/Doors-Hardmode-Remake/refs/heads/main/Entities/nightmarerushh"))()
@@ -60,7 +60,7 @@ end)()
 -- Vhs!Sans
 coroutine.wrap(function()
     while true do
-        wait(165)
+        wait(185)
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(0)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/no12356/Doors-Hardmode-Remake/refs/heads/main/Entities/vhssans"))()
