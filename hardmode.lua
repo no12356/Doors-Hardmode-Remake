@@ -16,8 +16,6 @@ achievementGiver({
     Reason = "You executed the HardCore script.",
     Image = "rbxassetid://17735553738"
 })
-end
-end)
 
 -- Depth
 coroutine.wrap(function()
