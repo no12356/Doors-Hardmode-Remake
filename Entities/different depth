@@ -115,7 +115,7 @@ entity:SetCallback("OnDamagePlayer", function(newHealth)
 		local v2 = Random.new()
 		local l__SizeValue__3 = shadow.SizeValue
 		
-		l__ImageLabel__1.Image = "rbxassetid://94131794533904"
+		l__ImageLabel__1.Image = "https://github.com/no12356/Doors-Hardmode-Remake/raw/main/jumpscares/depth.p"
 
 		if shadow:FindFirstChild("Jumpscare") then
 			shadow.Jumpscare:Play()
