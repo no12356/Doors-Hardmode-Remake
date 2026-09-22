@@ -6,168 +6,167 @@ local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/Regul
 
 local entity = spawner.Create({
 	Entity = {
-		Name = "Depth",
-		Asset = "https://github.com/no12356/Doors-Hardmode-Remake/raw/main/models/Depth.rbxm", -- Replace with your uploaded model asset ID
+		Name = "Soon To Be Depth",
+		Asset = "https://github.com/RegularVynixu/Utilities/blob/main/Doors%20Entity%20Spawner/Models/Rush.rbxm?raw=true",
 		HeightOffset = 0
 	},
+
 	Lights = {
 		Flicker = {
 			Enabled = true,
-			Duration = 3
+			Duration = 1
 		},
 		Shatter = true,
 		Repair = false
 	},
-	Earthquake = {
-		Enabled = true
-	},
+
 	CameraShake = {
 		Enabled = true,
 		Range = 100,
 		Values = {1.5, 20, 0.1, 1}
 	},
+
 	Movement = {
-		Speed = 350,
+		Speed = 100,
 		Delay = 2,
 		Reversed = false
 	},
+
 	Rebounding = {
 		Enabled = true,
-		Type = "Ambush", -- "Blitz"
+		Type = "Ambush",
 		Min = 1,
 		Max = 1,
 		Delay = 2
 	},
+
 	Damage = {
 		Enabled = true,
 		Range = 40,
 		Amount = 125
 	},
+
+	--====== Jumpscare ======--
+
+	Jumpscare = {
+		true, -- Enabled
+
+		{
+			Image1 = "rbxassetid://11417375410",
+			Image2 = "rbxassetid://11417375410",
+
+			Shake = true,
+
+			Sound1 = {
+				10483790459,
+				{
+					Volume = 0.5
+				}
+			},
+
+			Sound2 = {
+				5263560566,
+				{
+					Volume = 0.5
+				}
+			},
+
+			Flashing = {
+				true,
+				Color3.fromRGB(50, 115, 108)
+			},
+
+			Tease = {
+				false,
+				Min = 1,
+				Max = 5
+			}
+		}
+	},
+
 	Crucifixion = {
 		Enabled = true,
 		Range = 40,
 		Resist = false,
 		Break = true
 	},
+
 	Death = {
-		Type = "Curious",
-		Hints = {"You died to who you call Depth", "Depth is faster than rush and ambush", "And he can rebound 2 Times","use what you leared from Ambush and rush tho.","I am Nerfing All Of Entitys","To not spawn in No Hiding Spots Rooms"},
-		Cause = "Depth"
+		Type = "Guiding",
+		Hints = {"Death", "Hints", "Go", "Here"},
+		Cause = ""
 	}
 })
 
 ---====== Debug entity ======---
 
-entity:SetCallback("OnRebounding", function(startOfRebound)
-	-- Variables for the entity
-	local entityModel = entity.Model
-	local main = entityModel:WaitForChild("Main")
-	local attachment = main:WaitForChild("Attachment")
-	local AttachmentSwitch = main:WaitForChild("AttachmentSwitch")
-	local sounds = {
-		footsteps = main:WaitForChild("Footsteps"),
-		playSound = main:WaitForChild("PlaySound"),
-		switch = main:WaitForChild("Switch"),
-		switchBack = main:WaitForChild("SwitchBack")
-	}
+entity:SetCallback("OnSpawned", function()
+	print("Entity has spawned")
+end)
 
-	-- Toggle particle emitters and lights within the entityModel
-	for _, c in ipairs(attachment:GetChildren()) do
-		if c:IsA("ParticleEmitter") or c:IsA("Light") then
-			c.Enabled = (not startOfRebound)
-		end
-	end
-	for _, c in ipairs(AttachmentSwitch:GetChildren()) do
-		if c:IsA("ParticleEmitter") or c:IsA("Light") then
-			c.Enabled = startOfRebound
-		end
-	end
+entity:SetCallback("OnStartMoving", function()
+	print("Entity has started moving")
+end)
 
-	-- Play sounds
-	if startOfRebound == true then
-		sounds.footsteps.PlaybackSpeed = 1
-		sounds.playSound.PlaybackSpeed = 1
-		sounds.switch:Play()
+entity:SetCallback("OnReachNode", function(node)
+	print("Entity has reached node:", node)
+end)
+
+entity:SetCallback("OnEnterRoom", function(room, firstTime)
+	if firstTime == true then
+		print("Entity has entered room: "..room.Name.." for the first time")
 	else
-		sounds.footsteps.PlaybackSpeed = 1
-		sounds.playSound.PlaybackSpeed = 1
-		sounds.switchBack:Play()
+		print("Entity has entered room: "..room.Name.." again")
 	end
+end)
+
+entity:SetCallback("OnLookAt", function(lineOfSight)
+	if lineOfSight == true then
+		print("Player is looking at entity")
+	else
+		print("Player view is obstructed by something")
+	end
+end)
+
+entity:SetCallback("OnRebounding", function(startOfRebound)
+	if startOfRebound == true then
+		print("Entity has started rebounding")
+	else
+		print("Entity has finished rebounding")
+	end
+end)
+
+entity:SetCallback("OnDespawning", function()
+	print("Entity is despawning")
+end)
+
+entity:SetCallback("OnDespawned", function()
+	print("Entity has despawned")
 end)
 
 entity:SetCallback("OnDamagePlayer", function(newHealth)
 	if newHealth == 0 then
-		local shadow = game:GetObjects("rbxassetid://11503625408")[1]
-		local gui = Instance.new("ScreenGui", game.Players.LocalPlayer.PlayerGui)
-		local TweenService = game:GetService("TweenService")
-
-		local sound = Instance.new("Sound", gui)
-		sound.SoundId = "rbxassetid://131138845"
-		local octave = Instance.new("PitchShiftSoundEffect", sound)
-		octave.Octave = 0.5
-		local level = Instance.new("DistortionSoundEffect", sound)
-		level.Level = 0.97
-		sound:Play()
-
-		shadow.Parent = gui
-		shadow.Visible = true
-		local l__ImageLabel__1 = shadow.ImageLabel
-		local v2 = Random.new()
-		local l__SizeValue__3 = shadow.SizeValue
-		
-		l__ImageLabel__1.Image = "rbxassetid://94131794533904"
-
-		if shadow:FindFirstChild("Jumpscare") then
-			shadow.Jumpscare:Play()
-		end
-
-		for v5 = 1, 25 do
-			local v6 = math.random(1, 5)
-			if v6 == 1 then
-				shadow.BackgroundColor3 = Color3.new(0, 0, 0)
-				l__ImageLabel__1.ImageColor3 = Color3.new(1, 1, 1)
-			elseif v6 == 2 then
-				shadow.BackgroundColor3 = Color3.new(0, 1, 1)
-				l__ImageLabel__1.ImageColor3 = Color3.new(1, 1, 1)
-			elseif v6 == 3 then
-				shadow.BackgroundColor3 = Color3.new(0, 1, 1)
-				l__ImageLabel__1.ImageColor3 = Color3.new(1, 0, 0)
-			elseif v6 == 4 then
-				shadow.BackgroundColor3 = Color3.new(0, 1, 1)
-				l__ImageLabel__1.ImageColor3 = Color3.new(1, 1, 0)
-			elseif v6 == 5 then
-				shadow.BackgroundColor3 = Color3.new(1, 0, 0)
-				l__ImageLabel__1.ImageColor3 = Color3.new(0, 0, 0)
-			end
-			l__ImageLabel__1.Position = UDim2.new(v2:NextNumber(0.4, 0.6), 0, v2:NextNumber(0.45, 0.55), 0)
-			l__SizeValue__3.Value = l__SizeValue__3.Value + 0.01
-			TweenService:Create(l__ImageLabel__1, TweenInfo.new(0), {Rotation = math.random(-10, 10)}):Play()
-			l__SizeValue__3.Value = l__SizeValue__3.Value - 0.01
-			task.wait()
-		end
-
-		l__ImageLabel__1.ImageColor3 = Color3.new(1, 0, 0)
-		shadow.BackgroundColor3 = Color3.new(0, 0, 0)
-		TweenService:Create(l__ImageLabel__1, TweenInfo.new(2), {ImageTransparency = 1}):Play()
-		TweenService:Create(shadow, TweenInfo.new(1), {BackgroundTransparency = 1}):Play()
-
-		task.wait(2)
-
-		gui:Destroy()
-		if game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
-			game.Players.LocalPlayer.Character.Humanoid.Health = 0
-		end
-		
-		local stats = game:GetService("ReplicatedStorage"):FindFirstChild("GameStats")
-		if stats and stats:FindFirstChild("Player_".. game.Players.LocalPlayer.Name) then
-			local deathCause = stats["Player_".. game.Players.LocalPlayer.Name]:FindFirstChild("Total")
-			if deathCause and deathCause:FindFirstChild("DeathCause") then
-				deathCause.DeathCause.Value = "Depth"
-			end
-		end
+		print("Entity has killed the player")
+	else
+		print("Entity has damaged the player")
 	end
 end)
+
+--[[
+
+DEVELOPER NOTE:
+By overwriting 'CrucifixionOverwrite' the default crucifixion callback will be replaced with your custom callback.
+
+entity:SetCallback("CrucifixionOverwrite", function()
+	print("Custom crucifixion callback")
+end)
+
+]]--
 
 ---====== Run entity ======---
 
 entity:Run()
+-- entity:Pause()
+-- entity:Resume()
+-- entity:IsPaused()
+-- entity:Despawn()
