@@ -49,40 +49,28 @@ local entity = spawner.Create({
 	--====== Jumpscare ======--
 
 	Jumpscare = {
-		true, -- Enabled
+	true,
+	{
+		Image1 = "https://raw.githubusercontent.com/no12356/Doors-Hardmode-Remake/refs/heads/main/jumpscares/depth.png",
+		Image2 = "https://raw.githubusercontent.com/no12356/Doors-Hardmode-Remake/refs/heads/main/jumpscares/depth.png",
 
-		{
-			Image1 = "https://raw.githubusercontent.com/no12356/Doors-Hardmode-Remake/refs/heads/main/jumpscares/depth.png",
-			Image2 = "https://raw.githubusercontent.com/no12356/Doors-Hardmode-Remake/refs/heads/main/jumpscares/depth.png",
+		Shake = true,
 
-			Shake = true,
+		Sound1 = {
+			10483790459,
+			{
+				Volume = 0.5
+			}
+		},
 
-			Sound1 = {
-				10483790459,
-				{
-					Volume = 0.5
-				}
-			},
-
-			Sound2 = {
-				5263560566,
-				{
-					Volume = 0.5
-				}
-			},
-
-			Flashing = {
-				true,
-				Color3.fromRGB(50, 115, 108)
-			},
-
-			Tease = {
-				false,
-				Min = 1,
-				Max = 5
+		Sound2 = {
+			5263560566,
+			{
+				Volume = 0.5
 			}
 		}
-	},
+	}
+},
 
 	Crucifixion = {
 		Enabled = true,
