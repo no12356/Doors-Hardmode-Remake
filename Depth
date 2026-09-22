@@ -52,8 +52,8 @@ local entity = spawner.Create({
 		true, -- Enabled
 
 		{
-			Image1 = "rbxassetid://11417375410",
-			Image2 = "rbxassetid://11417375410",
+			Image1 = "https://raw.githubusercontent.com/no12356/Doors-Hardmode-Remake/refs/heads/main/jumpscares/depth.png",
+			Image2 = "https://raw.githubusercontent.com/no12356/Doors-Hardmode-Remake/refs/heads/main/jumpscares/depth.png",
 
 			Shake = true,
 
