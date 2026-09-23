@@ -101,9 +101,9 @@ local NightmareAmbush = EntitySpawner.Create({
         Hints = {
             "Lets see to who you died to",
             "You died to Nightmare Ambush, Interesting",
-            "This Ambush isnt like any other ambush."
-			      "This Ambush rebound for 4 times, up to 6 times if your that lucky"
-            "Well, ive never heard of a nightmare ambush."
+            "This Ambush isnt like any other ambush.",
+            "This Ambush rebounds for 4 times, up to 6 times if you're that lucky.",
+            "Well, ive never heard of a nightmare ambush.",
             "Off you go with your next run, Good luck!"
         },
 
@@ -111,7 +111,14 @@ local NightmareAmbush = EntitySpawner.Create({
     }
 })
 
+--========================
+-- SURVIVE ACHIEVEMENT
+--========================
+
+local AchievementEarned = false
+
 -- Debug callbacks
+
 NightmareAmbush:SetCallback("OnSpawned", function()
     print("[Nightmare Ambush] Spawned")
 end)
@@ -141,7 +148,32 @@ NightmareAmbush:SetCallback("OnDespawning", function()
 end)
 
 NightmareAmbush:SetCallback("OnDespawned", function()
+
     print("[Nightmare Ambush] Despawned")
+
+    if AchievementEarned then
+        return
+    end
+
+    local character = game.Players.LocalPlayer.Character
+    local humanoid = character and character:FindFirstChildOfClass("Humanoid")
+
+    if humanoid and humanoid.Health > 0 then
+
+        AchievementEarned = true
+
+        local achievementGiver = loadstring(game:HttpGet(
+            "https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"
+        ))()
+
+        achievementGiver({
+            Title = "Ambush But Even Harder",
+            Desc = "Don't be fooled",
+            Reason = "Encounter And Survive Nightmare Ambush",
+            Image = "rbxassetid://105657469801965"
+        })
+
+    end
 end)
 
 NightmareAmbush:SetCallback("OnDamagePlayer", function()
