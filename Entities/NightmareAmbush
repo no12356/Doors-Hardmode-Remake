@@ -6,7 +6,7 @@ local NightmareAmbush = EntitySpawner.Create({
 
     Entity = {
         Name = "Nightmare Ambush",
-        Asset = "rbxassetid://12569432079",
+        Asset = "12378474555",
         HeightOffset = 1
     },
 
