@@ -1,10 +1,13 @@
 ---====== Load spawner ======---
 
-local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/no12356/Utilities/refs/heads/main/Doors/Entity%20Spawner/V2/Source.lua"))()
+local spawner = loadstring(game:HttpGet(
+	"https://raw.githubusercontent.com/no12356/Utilities/refs/heads/main/Doors/Entity%20Spawner/V2/Source.lua"
+))()
 
 ---====== Create entity ======---
 
 local entity = spawner.Create({
+
 	Entity = {
 		Name = "Depth",
 		Asset = "https://github.com/no12356/Doors-Hardmode-Remake/raw/main/models/Depth.rbxm",
@@ -16,6 +19,7 @@ local entity = spawner.Create({
 			Enabled = true,
 			Duration = 1
 		},
+
 		Shatter = true,
 		Repair = false
 	},
@@ -48,6 +52,7 @@ local entity = spawner.Create({
 
 	Jumpscare = {
 		true,
+
 		{
 			Image1 = "https://raw.githubusercontent.com/no12356/Doors-Hardmode-Remake/refs/heads/main/jumpscares/depth.png",
 			Image2 = "https://raw.githubusercontent.com/no12356/Doors-Hardmode-Remake/refs/heads/main/jumpscares/depth.png",
@@ -92,6 +97,7 @@ local entity = spawner.Create({
 
 	Death = {
 		Type = "Guiding",
+
 		Hints = {
 			"You died to who you call Depth",
 			"Depth is faster than rush and ambush",
@@ -100,9 +106,14 @@ local entity = spawner.Create({
 			"I am Nerfing All Of Entitys",
 			"To not spawn in No Hiding Spots Rooms"
 		},
+
 		Cause = ""
 	}
 })
+
+---====== Achievement ======---
+
+local AchievementEarned = false
 
 ---====== Debug entity ======---
 
@@ -114,7 +125,7 @@ entity:SetCallback("OnStartMoving", function()
 	print("Depth has started moving")
 end)
 
-entity:SetCallback("OnReachNode", function(node)
+entity:SetCallback("OnReachedNode", function(node)
 	print("Depth has reached node:", node)
 end)
 
@@ -147,7 +158,34 @@ entity:SetCallback("OnDespawning", function()
 end)
 
 entity:SetCallback("OnDespawned", function()
+
 	print("Depth has despawned")
+
+	-- Check if player survived
+	if AchievementEarned then
+		return
+	end
+
+	local character = game.Players.LocalPlayer.Character
+	local humanoid = character and character:FindFirstChildOfClass("Humanoid")
+
+	if humanoid and humanoid.Health > 0 then
+
+		AchievementEarned = true
+
+		local achievementGiver = loadstring(game:HttpGet(
+			"https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"
+		))()
+
+		achievementGiver({
+			Title = "Finally Free",
+			Desc = "Encounter Depth",
+			Reason = "Survive Depth",
+			Image = "https://raw.githubusercontent.com/Cosmella-v/DoorSuff/refs/heads/main/DoorsModes/Png.png"
+		})
+
+		print("Achievement: Finally Free")
+	end
 end)
 
 entity:SetCallback("OnDamagePlayer", function(newHealth)
