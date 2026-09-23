@@ -1,51 +1,165 @@
 ---====== Load spawner ======---
-local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/V2/Source.lua"))()
 
----====== Create entity template ======---
+local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/no12356/Utilities/refs/heads/main/Doors/Entity%20Spawner/V2/Source.lua"))()
+
+---====== Create entity ======---
+
 local entity = spawner.Create({
-    Entity = {
-        Name = "200",
-        Asset = "https://raw.githubusercontent.com/Isth4t/DoorsModels/main/200Moving.rbxm", -- Replace with your uploaded model asset ID if needed
-        HeightOffset = 0
-    },
-    Lights = {
-        Flicker = { Enabled = true, Duration = 3 },
-        Shatter = true,
-        Repair = false
-    },
-    Earthquake = { Enabled = true },
-    CameraShake = { Enabled = true, Range = 120, Values = {5, 15, 0.1, 1} },
-    Movement = { Speed = 500, Delay = 10, Reversed = false },
-    Rebounding = { Enabled = true, Type = "Ambush", Min = 4, Max = 4, Delay = 2 },
-    Damage = { Enabled = true, IgnoreHiding = false, Range = 90, Amount = 100 },
-    Crucifixion = { Enabled = true, Range = 40, Resist = false, Break = true },
-    Death = {
-        Type = "Guiding",
-        Hints = {"You died to 200.", "It's very fast.", "Hide when you hear it!", "Its like A-60 but with less rebounds"},
-        Cause = "200"
-    }
+	Entity = {
+		Name = "200",
+		Asset = "https://github.com/Isth4t/DoorsModels/blob/main/200Moving.rbxm?raw=true",
+		HeightOffset = 0
+	},
+
+	Lights = {
+		Flicker = {
+			Enabled = true,
+			Duration = 5
+		},
+		Shatter = true,
+		Repair = false
+	},
+
+	CameraShake = {
+		Enabled = true,
+		Range = 100,
+		Values = {5, 15, 0.1, 1}
+	},
+
+	Movement = {
+		Speed = 700,
+		Delay = 10,
+		Reversed = true
+	},
+
+	Rebounding = {
+		Enabled = true,
+		Type = "Ambush",
+		Min = 4,
+		Max = 4,
+		Delay = 2
+	},
+
+	Damage = {
+		Enabled = true,
+		Range = 20,
+		Amount = 125
+	},
+
+	Jumpscare = {
+		true,
+		{
+			Image1 = "rbxassetid://11400868582",
+			Image2 = "rbxassetid://11400871105",
+
+			Size = 0.6,
+
+			Shake = true,
+
+			Sound1 = {
+				530591527,
+				{
+					Volume = 0.5
+				}
+			},
+
+			Sound2 = {
+				530591527,
+				{
+					Volume = 0.5
+				}
+			},
+
+			Flashing = {
+				true,
+				Color3.fromRGB(255, 255, 255)
+			},
+
+			Tease = {
+				false,
+				Min = 1,
+				Max = 3
+			}
+		}
+	},
+
+	Crucifixion = {
+		Enabled = true,
+		Range = 20,
+		Resist = false,
+		Break = true
+	},
+
+	Death = {
+		Type = "Guiding",
+		Hints = {
+			"You died to 200.",
+			"It's very fast.",
+			"Hide when you hear it!"
+		},
+		Cause = ""
+	}
 })
 
----====== Debug Callbacks ======---
+---====== Debug entity ======---
+
 entity:SetCallback("OnSpawned", function()
-    print("200 has spawned")
+	print("200 has spawned")
 end)
 
 entity:SetCallback("OnStartMoving", function()
-    print("200 has started moving")
+	print("200 has started moving")
+end)
+
+entity:SetCallback("OnReachNode", function(node)
+	print("200 has reached node:", node)
 end)
 
 entity:SetCallback("OnEnterRoom", function(room, firstTime)
-    if firstTime == true then
-        print("200 has entered room: ".. room.Name.. " for the first time")
-    else
-        print("200 has entered room: ".. room.Name.. " again")
-    end
+	if firstTime == true then
+		print("200 has entered room: ".. room.Name.. " for the first time")
+	else
+		print("200 has entered room: ".. room.Name.. " again")
+	end
+end)
+
+entity:SetCallback("OnLookAt", function(lineOfSight)
+	if lineOfSight == true then
+		print("Player is looking at 200")
+	else
+		print("Player view is obstructed from 200")
+	end
+end)
+
+entity:SetCallback("OnRebounding", function(startOfRebound)
+	if startOfRebound == true then
+		print("200 has started rebounding")
+	else
+		print("200 has finished rebounding")
+	end
+end)
+
+entity:SetCallback("OnDespawning", function()
+	print("200 is despawning")
 end)
 
 entity:SetCallback("OnDespawned", function()
-    print("200 despawned")
+	print("200 has despawned")
+end)
+
+entity:SetCallback("OnDamagePlayer", function(newHealth)
+	if newHealth == 0 then
+		print("200 has killed the player")
+	else
+		print("200 has damaged the player")
+	end
 end)
 
 ---====== Run entity ======---
+
 entity:Run()
+
+-- entity:Pause()
+-- entity:Resume()
+-- entity:IsPaused()
+-- entity:Despawn()
