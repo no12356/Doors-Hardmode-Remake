@@ -22,7 +22,7 @@ achievementGiver({
 -- Depth
 coroutine.wrap(function()
     while true do
-        wait(40)
+        wait(55)
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(0)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/no12356/Doors-Hardmode-Remake/main/Entities/different%20depth"))()
