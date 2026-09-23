@@ -99,9 +99,12 @@ local NightmareAmbush = EntitySpawner.Create({
         Type = "Guiding",
 
         Hints = {
-            "Nightmare Ambush",
-            "You died to Nightmare Ambush.",
-            "Hide when you hear it!"
+            "Lets see to who you died to",
+            "You died to Nightmare Ambush, Interesting",
+            "This Ambush isnt like any other ambush."
+			      "This Ambush rebound for 4 times, up to 6 times if your that lucky"
+            "Well, ive never heard of a nightmare ambush."
+            "Off you go with your next run, Good luck!"
         },
 
         Cause = "Nightmare Ambush"
