@@ -34,10 +34,10 @@ local NightmareAmbush = EntitySpawner.Create({
     Lights = {
         Flicker = {
             Enabled = true,
-            Duration = 1
+            Duration = 3
         },
 
-        Shatter = false,
+        Shatter = true,
         Repair = false
     },
 
