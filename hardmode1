@@ -24,7 +24,7 @@ achievementGiver({
 -- Depth
 coroutine.wrap(function()
     while true do
-        wait(80)
+        wait(40)
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(0)
 loadstring(game:HttpGet("https://github.com/Volta07/stuff/blob/main/Depth.rbxm"))()
@@ -34,7 +34,7 @@ end)()
 -- Smiler 
 coroutine.wrap(function()
     while true do
-        wait(250)
+        wait(225)
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(0)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Anctarus7105/Entities-Spawns/refs/heads/main/SmilerV2"))()
@@ -44,7 +44,7 @@ end)()
 -- Trauma
 coroutine.wrap(function()
     while true do
-        wait(120)
+        wait(100)
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(0)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/no12356/Doors-Hardmode-Remake/refs/heads/main/Entities/trauma"))()
@@ -64,7 +64,7 @@ end)()
 -- Vhs!Sans
 coroutine.wrap(function()
     while true do
-        wait(185)
+        wait(180)
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(0)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/no12356/Doors-Hardmode-Remake/refs/heads/main/Entities/vhssans"))()
@@ -84,7 +84,7 @@ end)()
 -- NightmareAmbush
 coroutine.wrap(function()
     while true do
-        wait(155)
+        wait(255)
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(0)
 loadstring(game:HttpGet("https://github.com/no12356/Doors-Hardmode-Remake/raw/main/Entities/NightmareAmbush"))()
