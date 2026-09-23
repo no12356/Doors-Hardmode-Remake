@@ -76,3 +76,14 @@ coroutine.wrap(function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/no12356/Doors-Hardmode-Remake/refs/heads/main/Entities/baller"))()
     end
 end)()
+
+-- NightmareAmbush
+coroutine.wrap(function()
+    while true do
+        wait(155)
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        wait(0)
+loadstring(game:HttpGet("https://github.com/no12356/Doors-Hardmode-Remake/raw/main/Entities/NightmareAmbush"))()
+    end
+end)()
+
