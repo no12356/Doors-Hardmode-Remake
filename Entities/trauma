@@ -1,51 +1,167 @@
 ---====== Load spawner ======---
-local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/V2/Source.lua"))()
 
----====== Create entity template ======---
+local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/no12356/Utilities/refs/heads/main/Doors/Entity%20Spawner/V2/Source.lua"))()
+
+---====== Create entity ======---
+
 local entity = spawner.Create({
-    Entity = {
-        Name = "Trauma",
-        Asset = "https://raw.githubusercontent.com/no12356/Doors-Hardmode-Remake/main/models/trauma.rbxm",
-        HeightOffset = 1
-    },
-    Lights = {
-        Flicker = { Enabled = true, Duration = 5 },
-        Shatter = true,
-        Repair = false
-    },
-    Earthquake = { Enabled = false },
-    CameraShake = { Enabled = true, Range = 100, Values = {5.5, 50, 0.5, 2} },
-    Movement = { Speed = 600, Delay = 5, Reversed = true },
-    Rebounding = { Enabled = true, Type = "Ambush", Min = 1, Max = 1, Delay = 2 },
-    Damage = { Enabled = true, IgnoreHiding = false, Range = 80, Amount = 100 },
-    Crucifixion = { Enabled = true, Range = 40, Resist = false, Break = true },
-    Death = {
-        Type = "Curious",
-        Hints = {"You died to Trauma...", "Use what you've learned from Rush and Ambush!","This Mob Randomly Spawns Theres No Pattern to it"},
-        Cause = "Trauma"
-    }
+	Entity = {
+		Name = "Trauma",
+		Asset = "https://github.com/no12356/Doors-Hardmode-Remake/raw/main/models/trauma.rbxm",
+		HeightOffset = 1
+	},
+
+	Lights = {
+		Flicker = {
+			Enabled = true,
+			Duration = 5
+		},
+		Shatter = true,
+		Repair = false
+	},
+
+	CameraShake = {
+		Enabled = true,
+		Range = 100,
+		Values = {5.5, 50, 0.5, 2}
+	},
+
+	Movement = {
+		Speed = 600,
+		Delay = 5,
+		Reversed = true
+	},
+
+	Rebounding = {
+		Enabled = true,
+		Type = "Ambush",
+		Min = 1,
+		Max = 1,
+		Delay = 2
+	},
+
+	Damage = {
+		Enabled = true,
+		Range = 80,
+		Amount = 125
+	},
+
+	Jumpscare = {
+		true,
+		{
+			Image1 = "nil",
+			Image2 = "rbxassetid://11278624160",
+
+			-- Customize jumpscare size here
+			-- 0.3 = small | 0.6 = medium | 1 = large
+			Size = 0.6,
+
+			Shake = true,
+
+			Sound1 = {
+				10483790459,
+				{
+					Volume = 0
+				}
+			},
+
+			Sound2 = {
+				10483837590,
+				{
+					Volume = 1000
+				}
+			},
+
+			Flashing = {
+				true,
+				Color3.fromRGB(255, 255, 255)
+			},
+
+			Tease = {
+				true,
+				Min = 1,
+				Max = 3
+			}
+		}
+	},
+
+	Crucifixion = {
+		Enabled = true,
+		Range = 80,
+		Resist = false,
+		Break = true
+	},
+
+	Death = {
+		Type = "Guiding",
+		Hints = {
+			"You died to Trauma...",
+			"Use what you've learned from Rush and Ambush!",
+			"This Mob Randomly Spawns Theres No Patten to it"
+		},
+		Cause = ""
+	}
 })
 
----====== Debug Callbacks ======---
+---====== Debug entity ======---
+
 entity:SetCallback("OnSpawned", function()
-    print("Trauma has spawned")
+	print("Trauma has spawned")
 end)
 
 entity:SetCallback("OnStartMoving", function()
-    print("Trauma has started moving")
+	print("Trauma has started moving")
+end)
+
+entity:SetCallback("OnReachNode", function(node)
+	print("Trauma has reached node:", node)
 end)
 
 entity:SetCallback("OnEnterRoom", function(room, firstTime)
-    if firstTime == true then
-        print("Trauma has entered room: ".. room.Name.. " for the first time")
-    else
-        print("Trauma has entered room: ".. room.Name.. " again")
-    end
+	if firstTime == true then
+		print("Trauma has entered room: ".. room.Name.. " for the first time")
+	else
+		print("Trauma has entered room: ".. room.Name.. " again")
+	end
+end)
+
+entity:SetCallback("OnLookAt", function(lineOfSight)
+	if lineOfSight == true then
+		print("Player is looking at Trauma")
+	else
+		print("Player view is obstructed from Trauma")
+	end
+end)
+
+entity:SetCallback("OnRebounding", function(startOfRebound)
+	if startOfRebound == true then
+		print("Trauma has started rebounding")
+	else
+		print("Trauma has finished rebounding")
+	end
+end)
+
+entity:SetCallback("OnDespawning", function()
+	print("Trauma is despawning")
 end)
 
 entity:SetCallback("OnDespawned", function()
-    print("Trauma despawned")
+	print("Trauma has despawned")
+end)
+
+entity:SetCallback("OnDamagePlayer", function(newHealth)
+	if newHealth == 0 then
+		print("Trauma has killed the player")
+	else
+		print("Trauma has damaged the player")
+	end
 end)
 
 ---====== Run entity ======---
+
 entity:Run()
+
+-- entity:Pause()
+-- entity:Resume()
+-- entity:IsPaused()
+-- entity:Despawn()
