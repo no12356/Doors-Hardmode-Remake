@@ -102,17 +102,51 @@ local NightmareRush = EntitySpawner.Create({
         Hints = {
             "Lets see to who you died to",
             "You died to Nightmare Rush",
-            "Nightmare Rush isnt like any rush, its a silent rush!"
-            "Also it rebounds, for only one time."
-            "I'll see you later now"
+            "Nightmare Rush isnt like any rush, its a silent rush!",
+            "Also it rebounds, for only one time.",
+            "I'll see you later now",
             "Good luck on your next run!"
-},
+        },
 
         Cause = "Nightmare Rush"
     }
 })
 
--- Debug callbacks
+--========================
+-- SURVIVE ACHIEVEMENT
+--========================
+
+local AchievementEarned = false
+
+NightmareRush:SetCallback("OnDespawned", function()
+
+    if AchievementEarned then
+        return
+    end
+
+    local character = game.Players.LocalPlayer.Character
+    local humanoid = character and character:FindFirstChildOfClass("Humanoid")
+
+    if humanoid and humanoid.Health > 0 then
+
+        AchievementEarned = true
+
+        local achievementGiver = loadstring(game:HttpGet(
+            "https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"
+        ))()
+
+        achievementGiver({
+            Title = "Rush From Your Nightmares",
+            Desc = "Don't be fooled",
+            Reason = "Encounter and Survive Nightmare Rush",
+            Image = "0"
+        })
+    end
+end)
+
+--========================
+-- DEBUG CALLBACKS
+--========================
 
 NightmareRush:SetCallback("OnSpawned", function()
     print("[Nightmare Rush] Spawned")
@@ -153,5 +187,9 @@ end)
 NightmareRush:SetCallback("CrucifixionOverwrite", function()
     print("[Nightmare Rush] Crucifixion overwritten")
 end)
+
+--========================
+-- RUN
+--========================
 
 NightmareRush:Run()
