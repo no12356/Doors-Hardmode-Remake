@@ -25,7 +25,7 @@ coroutine.wrap(function()
         wait(40)
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(0)
-loadstring(game:HttpGet(""))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/no12356/Doors-Hardmode-Remake/main/Entities/different%20depth))()
     end
 end)()
 
@@ -85,7 +85,7 @@ coroutine.wrap(function()
         wait(255)
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(0)
-loadstring(game:HttpGet("https://github.com/no12356/Doors-Hardmode-Remake/raw/main/Entities/NightmareAmbush"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/no12356/Doors-Hardmode-Remake/main/Entities/NightmareAmbush))()
     end
 end)()
 
