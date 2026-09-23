@@ -96,7 +96,7 @@ local NightmareAmbush = EntitySpawner.Create({
     },
 
     Death = {
-        Type = "Guiding",
+        Type = "Curious",
 
         Hints = {
             "Lets see to who you died to",
