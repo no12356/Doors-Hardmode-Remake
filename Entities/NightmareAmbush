@@ -170,7 +170,7 @@ NightmareAmbush:SetCallback("OnDespawned", function()
             Title = "Ambush But Even Harder",
             Desc = "Don't be fooled",
             Reason = "Encounter And Survive Nightmare Ambush",
-            Image = "rbxassetid://105657469801965"
+            Image = "0"
         })
 
     end
