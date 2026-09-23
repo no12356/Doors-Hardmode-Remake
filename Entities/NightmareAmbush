@@ -1,0 +1,152 @@
+local EntitySpawner = loadstring(game:HttpGet(
+    "https://raw.githubusercontent.com/no12356/Utilities/refs/heads/main/Doors/Entity%20Spawner/V2/Source.lua"
+))()
+
+local NightmareAmbush = EntitySpawner.Create({
+
+    Entity = {
+        Name = "Nightmare Ambush",
+        Asset = "rbxassetid://12569432079",
+        HeightOffset = 1
+    },
+
+    Movement = {
+        Speed = 400,
+        Delay = 0,
+        Reversed = false
+    },
+
+    Damage = {
+        Enabled = true,
+        Range = 100,
+        Amount = 125,
+        IgnoreHiding = false
+    },
+
+    Rebounding = {
+        Enabled = true,
+        Type = "Ambush",
+        Min = 4,
+        Max = 4,
+        Delay = 2
+    },
+
+    Lights = {
+        Flicker = {
+            Enabled = true,
+            Duration = 1
+        },
+
+        Shatter = false,
+        Repair = false
+    },
+
+    Earthquake = {
+        Enabled = false
+    },
+
+    CameraShake = {
+        Enabled = true,
+        Values = {
+            1.5,
+            20,
+            0.1,
+            1
+        },
+        Range = 100
+    },
+
+    Jumpscare = {
+        false,
+
+        {
+            Image1 = "",
+            Image2 = "",
+            Shake = false,
+
+            Sound1 = {
+                10483790459,
+                {Volume = 2000}
+            },
+
+            Sound2 = {
+                10483837590,
+                {Volume = 2000}
+            },
+
+            Flashing = {
+                true,
+                Color3.fromRGB(255, 0, 0)
+            },
+
+            Tease = {
+                false,
+                Min = 1,
+                Max = 1
+            }
+        }
+    },
+
+    Crucifixion = {
+        Type = "Guiding",
+        Enabled = true,
+        Range = 40,
+        Resist = false,
+        Break = true
+    },
+
+    Death = {
+        Type = "Guiding",
+
+        Hints = {
+            "Nightmare Ambush",
+            "You died to Nightmare Ambush.",
+            "Hide when you hear it!"
+        },
+
+        Cause = "Nightmare Ambush"
+    }
+})
+
+-- Debug callbacks
+NightmareAmbush:SetCallback("OnSpawned", function()
+    print("[Nightmare Ambush] Spawned")
+end)
+
+NightmareAmbush:SetCallback("OnStartMoving", function()
+    print("[Nightmare Ambush] Started moving")
+end)
+
+NightmareAmbush:SetCallback("OnReachedNode", function()
+    print("[Nightmare Ambush] Reached node")
+end)
+
+NightmareAmbush:SetCallback("OnEnterRoom", function(room)
+    print("[Nightmare Ambush] Entered room:", room)
+end)
+
+NightmareAmbush:SetCallback("OnLookAt", function(isVisible)
+    print("[Nightmare Ambush] Looked at:", isVisible)
+end)
+
+NightmareAmbush:SetCallback("OnRebounding", function()
+    print("[Nightmare Ambush] Rebounding")
+end)
+
+NightmareAmbush:SetCallback("OnDespawning", function()
+    print("[Nightmare Ambush] Despawning")
+end)
+
+NightmareAmbush:SetCallback("OnDespawned", function()
+    print("[Nightmare Ambush] Despawned")
+end)
+
+NightmareAmbush:SetCallback("OnDamagePlayer", function()
+    print("[Nightmare Ambush] Damaged player")
+end)
+
+NightmareAmbush:SetCallback("CrucifixionOverwrite", function()
+    print("[Nightmare Ambush] Crucifixion overwritten")
+end)
+
+NightmareAmbush:Run()
