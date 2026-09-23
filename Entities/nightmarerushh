@@ -1,51 +1,157 @@
----====== Load spawner ======---
-local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/V2/Source.lua"))()
+local EntitySpawner = loadstring(game:HttpGet(
+    "https://raw.githubusercontent.com/no12356/Utilities/refs/heads/main/Doors/Entity%20Spawner/V2/Source.lua"
+))()
 
----====== Create entity template ======---
-local entity = spawner.Create({
+local NightmareRush = EntitySpawner.Create({
+
     Entity = {
         Name = "Nightmare Rush",
-        Asset = "rbxassetid://11179883020", -- Replace with your uploaded model asset ID if needed
+        Asset = "rbxassetid://11179883020",
         HeightOffset = 1
     },
+
+    Movement = {
+        Speed = 200,
+        Delay = 0,
+        Reversed = false
+    },
+
+    Damage = {
+        Enabled = true,
+        Range = 100,
+        Amount = 125,
+        IgnoreHiding = false
+    },
+
+    Rebounding = {
+        Enabled = false,
+        Type = "Rush",
+        Min = 1,
+        Max = 1,
+        Delay = 1
+    },
+
     Lights = {
-        Flicker = { Enabled = true, Duration = 3 },
-        Shatter = true,
+        Flicker = {
+            Enabled = true,
+            Duration = 1
+        },
+
+        Shatter = false,
         Repair = false
     },
-    Earthquake = { Enabled = false },
-    CameraShake = { Enabled = true, Range = 120, Values = {12, 35, 0.1, 1.2} },
-    Movement = { Speed = 200, Delay = 3, Reversed = false },
-    Rebounding = { Enabled = true, Type = "Ambush", Min = 1, Max = 1, Delay = 1 },
-    Damage = { Enabled = true, IgnoreHiding = false, Range = 90, Amount = 100 },
-    Crucifixion = { Enabled = true, Range = 40, Resist = false, Break = true },
-    Death = {
+
+    Earthquake = {
+        Enabled = false
+    },
+
+    CameraShake = {
+        Enabled = true,
+        Values = {
+            1.5,
+            20,
+            0.1,
+            1
+        },
+        Range = 100
+    },
+
+    Jumpscare = {
+        true,
+
+        {
+            Image1 = "rbxassetid://10888024922",
+            Image2 = "rbxassetid://10888024922",
+
+            Shake = true,
+
+            Sound1 = {
+                10483790459,
+                {Volume = 0.5}
+            },
+
+            Sound2 = {
+                10483837590,
+                {Volume = 0.5}
+            },
+
+            Flashing = {
+                true,
+                Color3.fromRGB(255, 0, 0)
+            },
+
+            Tease = {
+                false,
+                Min = 1,
+                Max = 3
+            }
+        }
+    },
+
+    Crucifixion = {
         Type = "Guiding",
-        Hints = {"You died to whom you call nightmare rush", "It's faster than regular Rush", "Dont be fooled, he doesn't make a sound when hes nearby", "Use the flickering lights to know when he arrives", "He's also like ambush, he rebounds only once"},
+        Enabled = true,
+        Range = 40,
+        Resist = false,
+        Break = true
+    },
+
+    Death = {
+        Type = "Curious",
+
+        Hints = {
+            "Lets see to who you died to",
+            "You died to Nightmare Rush",
+            "Nightmare Rush isnt like any rush, its a silent rush!"
+            "Also it rebounds, for only one time."
+            "I'll see you later now"
+            "Good luck on your next run!"
+},
+
         Cause = "Nightmare Rush"
     }
 })
 
----====== Debug Callbacks ======---
-entity:SetCallback("OnSpawned", function()
-    print("Nightmare Rush has spawned")
+-- Debug callbacks
+
+NightmareRush:SetCallback("OnSpawned", function()
+    print("[Nightmare Rush] Spawned")
 end)
 
-entity:SetCallback("OnStartMoving", function()
-    print("Nightmare Rush has started moving")
+NightmareRush:SetCallback("OnStartMoving", function()
+    print("[Nightmare Rush] Started moving")
 end)
 
-entity:SetCallback("OnEnterRoom", function(room, firstTime)
-    if firstTime == true then
-        print("Nightmare Rush has entered room: ".. room.Name.. " for the first time")
-    else
-        print("Nightmare Rush has entered room: ".. room.Name.. " again")
-    end
+NightmareRush:SetCallback("OnReachedNode", function()
+    print("[Nightmare Rush] Reached node")
 end)
 
-entity:SetCallback("OnDespawned", function()
-    print("Nightmare Rush despawned")
+NightmareRush:SetCallback("OnEnterRoom", function(room)
+    print("[Nightmare Rush] Entered room:", room)
 end)
 
----====== Run entity ======---
-entity:Run()
+NightmareRush:SetCallback("OnLookAt", function(isVisible)
+    print("[Nightmare Rush] Looked at:", isVisible)
+end)
+
+NightmareRush:SetCallback("OnRebounding", function()
+    print("[Nightmare Rush] Rebounding")
+end)
+
+NightmareRush:SetCallback("OnDespawning", function()
+    print("[Nightmare Rush] Despawning")
+end)
+
+NightmareRush:SetCallback("OnDespawned", function()
+    print("[Nightmare Rush] Despawned")
+end)
+
+NightmareRush:SetCallback("OnDamagePlayer", function()
+    print("[Nightmare Rush] Damaged player")
+end)
+
+NightmareRush:SetCallback("CrucifixionOverwrite", function()
+    print("[Nightmare Rush] Crucifixion overwritten")
+end)
+
+NightmareRush:Run()
