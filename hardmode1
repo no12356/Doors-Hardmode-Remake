@@ -22,7 +22,7 @@ achievementGiver({
 -- Depth
 coroutine.wrap(function()
     while true do
-        wait(55)
+        wait(80)
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(0)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/no12356/Doors-Hardmode-Remake/main/Entities/different%20depth"))()
@@ -32,7 +32,7 @@ end)()
 -- Smiler 
 coroutine.wrap(function()
     while true do
-        wait(225)
+        wait(320)
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(0)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/no12356/Doors-Hardmode-Remake/main/Entities/smiler"))()
@@ -72,7 +72,7 @@ end)()
 -- Baller
 coroutine.wrap(function()
     while true do
-        wait(350)
+        wait(450)
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(0)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/no12356/Doors-Hardmode-Remake/refs/heads/main/Entities/baller"))()
