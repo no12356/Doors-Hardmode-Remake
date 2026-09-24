@@ -42,7 +42,7 @@ end)()
 -- Trauma
 coroutine.wrap(function()
     while true do
-        wait(100)
+        wait(150)
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(0)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/no12356/Doors-Hardmode-Remake/refs/heads/main/Entities/trauma"))()
@@ -52,7 +52,7 @@ end)()
 -- NightmareRush
 coroutine.wrap(function()
     while true do
-        wait(155)
+        wait(255)
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(0)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/no12356/Doors-Hardmode-Remake/refs/heads/main/Entities/nightmarerushh"))()
@@ -72,7 +72,7 @@ end)()
 -- Baller
 coroutine.wrap(function()
     while true do
-        wait(450)
+        wait(550)
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(0)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/no12356/Doors-Hardmode-Remake/refs/heads/main/Entities/baller"))()
@@ -89,3 +89,12 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/no12356/Doors-Hardmod
     end
 end)()
 
+-- 200
+coroutine.wrap(function()
+    while true do
+        wait(450)
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        wait(0)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/no12356/Doors-Hardmode-Remake/main/Entities/200"))()
+    end
+end)()
