@@ -31,7 +31,7 @@ local entity = spawner.Create({
 	},
 
 	Movement = {
-		Speed = 350,
+		Speed = 875,
 		Delay = 17,
 		Reversed = false
 	},
@@ -103,12 +103,14 @@ local entity = spawner.Create({
 			"Ooh, its a green looking depth",
 			"This "green looking depth" isnt like any other depth!",
 			"He always rebounds for about 20 times",
-			"He spawns whenever you stall for too long",
+			"He spawns in whenever you stall for too long",
 			"So, don't stall for too long!",
-		  "See you on the next run!"
+		  "Don't underestimate this depth's speed!",
+      "He's a bit faster then smiler.",
+      "Alright, See you on the next run!"
 			},
 
-		Cause = "one dumb looking depth"
+		Cause = "One Green Looking Depth"
 	}
 })
 
