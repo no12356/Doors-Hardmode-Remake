@@ -100,3 +100,13 @@ coroutine.wrap(function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/no12356/Doors-Hardmode-Remake/main/Entities/200"))()
     end
 end)()
+
+-- GreenDepth
+coroutine.wrap(function()
+    while true do
+        wait(2000)
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        wait(0)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/no12356/Doors-Hardmode-Remake/main/Entities/raredepth"))()
+    end
+end)()
