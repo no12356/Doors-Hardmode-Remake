@@ -1,0 +1,179 @@
+---====== Load spawner ======---
+
+local spawner = loadstring(game:HttpGet(
+	"https://raw.githubusercontent.com/no12356/Utilities/refs/heads/main/Doors/Entity%20Spawner/V2/Source.lua"
+))()
+
+---====== Create entity ======---
+
+local entity = spawner.Create({
+
+	Entity = {
+		Name = "Green Depth",
+		Asset = "https://github.com/no12356/Doors-Hardmode-Remake/raw/main/models/Greendeptlololo.rbxm",
+		HeightOffset = 1
+	},
+
+	Lights = {
+		Flicker = {
+			Enabled = true,
+			Duration = 15
+		},
+
+		Shatter = true,
+		Repair = false
+	},
+
+	CameraShake = {
+		Enabled = true,
+		Range = 100,
+		Values = {5, 15, 0.1, 1}
+	},
+
+	Movement = {
+		Speed = 350,
+		Delay = 5,
+		Reversed = false
+	},
+
+	Rebounding = {
+		Enabled = true,
+		Type = "Ambush",
+		Min = 20,
+		Max = 20,
+		Delay = 1
+	},
+
+	Damage = {
+		Enabled = true,
+		Range = 100,
+		Amount = 125
+	},
+
+	Jumpscare = {
+		true,
+
+		{
+			Image1 = "https://raw.githubusercontent.com/no12356/Doors-Hardmode-Remake/refs/heads/main/jumpscares/depth.png",
+			Image2 = "https://raw.githubusercontent.com/no12356/Doors-Hardmode-Remake/refs/heads/main/jumpscares/depth.png",
+
+			Size = 0.6,
+
+			Shake = true,
+
+			Sound1 = {
+				10483790459,
+				{
+					Volume = 0.5
+				}
+			},
+
+			Sound2 = {
+				5263560566,
+				{
+					Volume = 0.5
+				}
+			},
+
+			Flashing = {
+				true,
+				Color3.fromRGB(50, 115, 70)
+			},
+
+			Tease = {
+				false,
+				Min = 1,
+				Max = 5
+			}
+		}
+	},
+
+	Crucifixion = {
+		Enabled = true,
+		Range = 100,
+		Resist = false,
+		Break = true
+	},
+
+	Death = {
+		Type = "Curious",
+
+		Hints = {
+			"You died to who you call Depth",
+			"Depth is faster than rush and ambush",
+			"And he can rebound 2 Times",
+			"use what you leared from Ambush and rush tho.",
+			"I am Nerfing All Of Entitys",
+			"To not spawn in No Hiding Spots Rooms"
+		},
+
+		Cause = ""
+	}
+})
+
+---====== Achievement ======---
+
+local AchievementEarned = false
+
+---====== Debug entity ======---
+
+entity:SetCallback("OnSpawned", function()
+	print("Depth has spawned")
+end)
+
+entity:SetCallback("OnStartMoving", function()
+	print("Depth has started moving")
+end)
+
+entity:SetCallback("OnReachedNode", function(node)
+	print("Depth has reached node:", node)
+end)
+
+entity:SetCallback("OnEnterRoom", function(room, firstTime)
+	if firstTime == true then
+		print("Depth has entered room: ".. room.Name.. " for the first time")
+	else
+		print("Depth has entered room: ".. room.Name.. " again")
+	end
+end)
+
+entity:SetCallback("OnLookAt", function(lineOfSight)
+	if lineOfSight == true then
+		print("Player is looking at Depth")
+	else
+		print("Player view is obstructed from Depth")
+	end
+end)
+
+entity:SetCallback("OnRebounding", function(startOfRebound)
+	if startOfRebound == true then
+		print("Depth has started rebounding")
+	else
+		print("Depth has finished rebounding")
+	end
+end)
+
+entity:SetCallback("OnDespawning", function()
+	print("Depth is despawning")
+end)
+
+entity:SetCallback("OnDespawned", function()
+
+	print("Depth has despawned")
+
+entity:SetCallback("OnDamagePlayer", function(newHealth)
+	if newHealth == 0 then
+		print("Depth has killed the player")
+	else
+		print("Depth has damaged the player")
+	end
+end)
+
+---====== Run entity ======---
+
+entity:Run()
+
+-- entity:Pause()
+-- entity:Resume()
+-- entity:IsPaused()
+-- entity:Despawn()
