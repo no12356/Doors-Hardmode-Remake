@@ -32,7 +32,7 @@ local entity = spawner.Create({
 
 	Movement = {
 		Speed = 350,
-		Delay = 5,
+		Delay = 17,
 		Reversed = false
 	},
 
@@ -41,7 +41,7 @@ local entity = spawner.Create({
 		Type = "Ambush",
 		Min = 20,
 		Max = 20,
-		Delay = 1
+		Delay = 0.3
 	},
 
 	Damage = {
@@ -54,8 +54,8 @@ local entity = spawner.Create({
 		true,
 
 		{
-			Image1 = "https://raw.githubusercontent.com/no12356/Doors-Hardmode-Remake/refs/heads/main/jumpscares/depth.png",
-			Image2 = "https://raw.githubusercontent.com/no12356/Doors-Hardmode-Remake/refs/heads/main/jumpscares/depth.png",
+			Image1 = "https://raw.githubusercontent.com/no12356/Doors-Hardmode-Remake/main/jumpscares/agreenlookingdepth.png",
+			Image2 = "https://raw.githubusercontent.com/no12356/Doors-Hardmode-Remake/main/jumpscares/agreenlookingdepth.png",
 
 			Size = 0.6,
 
@@ -91,7 +91,7 @@ local entity = spawner.Create({
 	Crucifixion = {
 		Enabled = true,
 		Range = 100,
-		Resist = false,
+		Resist = true,
 		Break = true
 	},
 
@@ -99,15 +99,16 @@ local entity = spawner.Create({
 		Type = "Curious",
 
 		Hints = {
-			"You died to who you call Depth",
-			"Depth is faster than rush and ambush",
-			"And he can rebound 2 Times",
-			"use what you leared from Ambush and rush tho.",
-			"I am Nerfing All Of Entitys",
-			"To not spawn in No Hiding Spots Rooms"
-		},
+			"Lets see to who you died to",
+			"Ooh, its a green looking depth",
+			"This "green looking depth" isnt like any other depth!",
+			"He always rebounds for about 20 times",
+			"He spawns whenever you stall for too long",
+			"So, don't stall for too long!",
+		  "See you on the next run!"
+			},
 
-		Cause = ""
+		Cause = "one dumb looking depth"
 	}
 })
 
