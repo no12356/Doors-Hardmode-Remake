@@ -64,14 +64,14 @@ local entity = spawner.Create({
 			Sound1 = {
 				10483790459,
 				{
-					Volume = 0.5
+					Volume = 4
 				}
 			},
 
 			Sound2 = {
 				5263560566,
 				{
-					Volume = 0.5
+					Volume = 4
 				}
 			},
 
@@ -101,7 +101,7 @@ local entity = spawner.Create({
 		Hints = {
 			"Lets see to who you died to",
 			"Ooh, its a green looking depth",
-			"This "green looking depth" isnt like any other depth!",
+			"This 'green looking depth' isnt like any other depth!",
 			"He always rebounds for about 20 times",
 			"He spawns in whenever you stall for too long",
 			"So, don't stall for too long!",
@@ -161,8 +161,8 @@ entity:SetCallback("OnDespawning", function()
 end)
 
 entity:SetCallback("OnDespawned", function()
-
 	print("Depth has despawned")
+end)
 
 entity:SetCallback("OnDamagePlayer", function(newHealth)
 	if newHealth == 0 then
