@@ -6,13 +6,13 @@ local NightmareAmbush = EntitySpawner.Create({
 
     Entity = {
         Name = "Nightmare Ambush",
-        Asset = "12378474555",
+        Asset = "12569432079",
         HeightOffset = 1
     },
 
     Movement = {
-        Speed = 400,
-        Delay = 0,
+        Speed = 500,
+        Delay = 6.5,
         Reversed = false
     },
 
@@ -28,13 +28,13 @@ local NightmareAmbush = EntitySpawner.Create({
         Type = "Ambush",
         Min = 4,
         Max = 4,
-        Delay = 2
+        Delay = 1
     },
 
     Lights = {
         Flicker = {
             Enabled = true,
-            Duration = 3
+            Duration = 3.5
         },
 
         Shatter = true,
@@ -57,7 +57,7 @@ local NightmareAmbush = EntitySpawner.Create({
     },
 
     Jumpscare = {
-        false,
+        True,
 
         {
             Image1 = "",
@@ -103,7 +103,7 @@ local NightmareAmbush = EntitySpawner.Create({
             "You died to Nightmare Ambush, Interesting",
             "This Ambush isnt like any other ambush.",
             "This Ambush rebounds for 4 times, up to 6 times if you're that lucky.",
-            "Well, ive never heard of a nightmare ambush.",
+            "Don't confuse him with trauma!",
             "Off you go with your next run, Good luck!"
         },
 
