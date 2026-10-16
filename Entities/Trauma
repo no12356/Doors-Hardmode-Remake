@@ -93,7 +93,7 @@ local entity = spawner.Create({
 	},
 
 	Death = {
-		Type = "Guiding",
+		Type = "Curious",
 		Hints = {
 			"You died to Trauma...",
 			"Use what you've learned from Rush and Ambush!",
