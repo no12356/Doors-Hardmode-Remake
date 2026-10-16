@@ -5,9 +5,9 @@ wait(4) require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).c
 game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
 require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Thanks to idontknowbutimakedoorsvideos127 for recreating some of the entities!",true)
 wait(5) require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Credits to Cosmella-v for making the original mode",true)
-require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Please try and credit me if your using this script in any video!",true)
+wait(10) require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Please try and credit me if your using this script in any video!",true)
 wait(5) require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Contact me on discord if any problems occur!",true)
-require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Enjoy!",true)
+wait(10) require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Enjoy!",true)
 
 ---====== Load achievement giver ======---
 local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"))()
