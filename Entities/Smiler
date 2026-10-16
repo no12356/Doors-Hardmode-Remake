@@ -94,9 +94,15 @@ local entity = spawner.Create({
 	Death = {
 		Type = "Curious",
 		Hints = {
-			"¡¡ THIS SMILE IS LIKE ABMUSH !!",
-			"Hide and don't Smile",
-			"Don't get Tricked"
+			 "!! THIS SMILE IS LIKE AMBUSH !!",
+        "Let's see what you've died to.",
+        "Ah! It's Smiler!",
+        "This guy is like Ambush, but faster.",
+        "Don't underestimate his speed!",
+        "He rebounds 5 to 10 times!",
+        "He's faster than both Nightmare Rush and Nightmare Ambush!",
+        "Well, I'll see you around sometime. Have fun!",
+        "you wont"
 		},
 		Cause = "smiler has a big boner"
 	}
