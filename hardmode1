@@ -5,10 +5,9 @@ wait(4) require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).c
 game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
 require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Thanks to idontknowbutimakedoorsvideos127 for recreating some of the entities!",true)
 wait(5) require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Credits to Cosmella-v for making the original mode",true)
-game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
-require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Enjoy!, took me so much time to fix the jumpscares😭",true)
-game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
-wait(5) require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Please try and credit me if your using this script in any video!",true)
+require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Please try and credit me if your using this script in any video!",true)
+wait(5) require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Contact me on discord if any problems occur!",true)
+require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Enjoy!",true)
 
 ---====== Load achievement giver ======---
 local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"))()
@@ -24,7 +23,7 @@ achievementGiver({
 -- Depth
 coroutine.wrap(function()
     while true do
-        wait(70)
+        wait(75)
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(0)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/no12356/Doors-Hardmode-Remake/main/Entities/Depth"))()
@@ -34,7 +33,7 @@ end)()
 -- Smiler 
 coroutine.wrap(function()
     while true do
-        wait(305)
+        wait(300)
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(0)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/no12356/Doors-Hardmode-Remake/main/Entities/Smiler"))()
@@ -44,7 +43,7 @@ end)()
 -- Trauma
 coroutine.wrap(function()
     while true do
-        wait(140)
+        wait(130)
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(0)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/no12356/Doors-Hardmode-Remake/refs/heads/main/Entities/Trauma"))()
@@ -54,7 +53,7 @@ end)()
 -- NightmareRush
 coroutine.wrap(function()
     while true do
-        wait(230)
+        wait(105)
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(0)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/no12356/Doors-Hardmode-Remake/refs/heads/main/Entities/NightmareRush"))()
@@ -84,7 +83,7 @@ end)()
 -- NightmareAmbush
 coroutine.wrap(function()
     while true do
-        wait(345)
+        wait(245)
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(0)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/no12356/Doors-Hardmode-Remake/main/Entities/NightmareAmbush"))()
@@ -94,7 +93,7 @@ end)()
 -- 200
 coroutine.wrap(function()
     while true do
-        wait(450)
+        wait(200)
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(0)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/no12356/Doors-Hardmode-Remake/main/Entities/200"))()
@@ -104,7 +103,7 @@ end)()
 -- GreenDepth
 coroutine.wrap(function()
     while true do
-        wait(2000)
+        wait(5000)
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(0)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/no12356/Doors-Hardmode-Remake/main/Entities/redepth"))()
