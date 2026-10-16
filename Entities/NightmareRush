@@ -11,8 +11,8 @@ local NightmareRush = EntitySpawner.Create({
     },
 
     Movement = {
-        Speed = 200,
-        Delay = 3,
+        Speed = 300,
+        Delay = 5,
         Reversed = false
     },
 
@@ -25,7 +25,7 @@ local NightmareRush = EntitySpawner.Create({
 
     Rebounding = {
         Enabled = true,
-        Type = "Rush",
+        Type = "Ambush",
         Min = 1,
         Max = 1,
         Delay = 1
@@ -34,7 +34,7 @@ local NightmareRush = EntitySpawner.Create({
     Lights = {
         Flicker = {
             Enabled = true,
-            Duration = 2
+            Duration = 3
         },
 
         Shatter = false,
@@ -67,12 +67,12 @@ local NightmareRush = EntitySpawner.Create({
 
             Sound1 = {
                 10483790459,
-                {Volume = 0.5}
+                {Volume = 10}
             },
 
             Sound2 = {
                 10483837590,
-                {Volume = 0.5}
+                {Volume = 10}
             },
 
             Flashing = {
