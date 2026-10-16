@@ -92,7 +92,7 @@ local entity = spawner.Create({
 	},
 
 	Death = {
-		Type = "Guiding",
+		Type = "Curious",
 		Hints = {
 			"¡¡ THIS SMILE IS LIKE ABMUSH !!",
 			"Hide and don't Smile",
