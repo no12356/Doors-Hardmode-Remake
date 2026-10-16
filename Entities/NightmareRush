@@ -37,7 +37,7 @@ local NightmareRush = EntitySpawner.Create({
             Duration = 3
         },
 
-        Shatter = false,
+        Shatter = true,
         Repair = false
     },
 
