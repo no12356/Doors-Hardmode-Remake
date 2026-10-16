@@ -28,7 +28,7 @@ local NightmareRush = EntitySpawner.Create({
         Type = "Ambush",
         Min = 1,
         Max = 1,
-        Delay = 1
+        Delay = 0.2
     },
 
     Lights = {
