@@ -12,7 +12,7 @@ local NightmareRush = EntitySpawner.Create({
 
     Movement = {
         Speed = 300,
-        Delay = 5,
+        Delay = 8,
         Reversed = false
     },
 
@@ -34,7 +34,7 @@ local NightmareRush = EntitySpawner.Create({
     Lights = {
         Flicker = {
             Enabled = true,
-            Duration = 3
+            Duration = 5
         },
 
         Shatter = true,
